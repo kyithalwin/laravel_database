@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Http\Controllers\blog;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/about',[blog::class, 'post']);
