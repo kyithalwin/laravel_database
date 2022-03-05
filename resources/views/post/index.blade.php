@@ -23,7 +23,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <h5>Posts List</h5>
-                <a href="">
+                <a href="{{ url('/posts/create') }}">
                     <button class="btn btn-primary btn-sm mb-2" style="float: right;"> 
                         <i class="fa fa-plus-circle"> Add New</i> 
                     </button>
