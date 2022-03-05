@@ -31,7 +31,9 @@
                 @if(Session('SuccessAlert'))
                     <div class="alert alert-success alert-dismissible show fade" >
                         <strong>{{ Session('SuccessAlert') }}</strong>
-                        <button class="close" data-dismiss="alert">&times;</button>
+                        <button class="close" data-dismiss="alert">&times;
+                            
+                        </button>
                     </div>
                 @endif
                 <table class="table  table-bordered table-hover">
