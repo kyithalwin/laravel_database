@@ -19,19 +19,20 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h5>Update Post</h5>
-                <form action="" method="POST">
+                <form action="{{ url('posts/'.$post->id) }}" method="POST">
                     {{ csrf_field() }}
+                    @method('PUT')
                    
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Post Title" value="{{ old('title')}}">
+                        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Post Title" value="{{ $post->title ?? old('title')}}">
                         @error('title')
                             <div class="invalid-feedback">{{  $message  }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="content">content</label>
-                        <textarea name="content" id="content" rows="3" class="form-control @error('content') is-invalid @enderror" placeholder="Enter Contact">{{ old('content')}}</textarea>
+                        <textarea name="content" id="content" rows="3" class="form-control @error('content') is-invalid @enderror" placeholder="Enter Contact">{{ $post->content ?? old('content')}}</textarea>
                         @error('content')
                             <div class="invalid-feedback">{{  $message  }}</div>
                         @enderror

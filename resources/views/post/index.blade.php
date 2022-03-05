@@ -28,9 +28,15 @@
                         <i class="fa fa-plus-circle"> Add New</i> 
                     </button>
                 </a>
+                @if(Session('SuccessAlert'))
+                    <div class="alert alert-success alert-dismissible show fade" >
+                        <strong>{{ Session('SuccessAlert') }}</strong>
+                        <button class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                @endif
                 <table class="table  table-bordered table-hover">
                     <thead>
-                        <tr>
+                        <tr style="text-align: center">
                             <th>ID</th>
                             <th>Title</th>
                             <th>Content</th>
@@ -43,13 +49,19 @@
                             <td>{{  $post->id }}</td>
                             <td>{{  $post->title }}</td>
                             <td>{{  $post->content }} </td>
-                            <td>
-                                <button class="btn btn-success btn-sm">
-                                    <i class="fa fa-edit"> Edit</i>
-                                </button>
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"> Delete</i>
-                                </button>
+                            <td style="text-align: center">
+                                <a href="{{ url('posts/'.$post->id.'/edit ') }}">
+                                    <button class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"> Edit</i>
+                                    </button>
+                                </a>
+                                
+                                <a href="">
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"> Delete</i>
+                                    </button>
+                                </a>
+                                
                             </td>
                         </tr>
                         @endforeach

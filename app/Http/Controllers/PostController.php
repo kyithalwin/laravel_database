@@ -66,7 +66,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('post.edit');
+        $post = Post::find($id);
+        return view('post.edit',compact('post'));
     }
 
     /**
@@ -78,8 +79,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'title' => 'required',
+            'content'=> 'required'
+        ]);
+        Post::find($id)->update([
+            'title'=> $request->title ,
+            'content'=> $request->content
+        ]);
+
+        return redirect('/posts')->with('SuccessAlert','Your Data Already Updated!');
+    } 
 
     /**
      * Remove the specified resource from storage.
