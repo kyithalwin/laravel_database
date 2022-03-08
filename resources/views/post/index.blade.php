@@ -28,12 +28,10 @@
                         <i class="fa fa-plus-circle"> Add New</i> 
                     </button>
                 </a>
-                @if(Session('SuccessAlert'))
-                    <div class="alert alert-success alert-dismissible show fade" >
-                        <strong>{{ Session('SuccessAlert') }}</strong>
-                        <button class="close" data-dismiss="alert">&times;
-                            
-                        </button>
+                @if(Session('successAlert'))
+                    <div class="alert alert-success alert-dismissible" >
+                        <strong>{{ Session('successAlert') }}</strong>  
+                        <button class="close" data-dismiss="alert"> &times; </button>
                     </div>
                 @endif
                 <table class="table  table-bordered table-hover">
@@ -52,18 +50,22 @@
                             <td>{{  $post->title }}</td>
                             <td>{{  $post->content }} </td>
                             <td style="text-align: center">
-                                <a href="{{ url('posts/'.$post->id.'/edit ') }}">
-                                    <button class="btn btn-success btn-sm">
-                                        <i class="fa fa-edit"> Edit</i>
-                                    </button>
-                                </a>
-                                
-                                <a href="">
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"> Delete</i>
-                                    </button>
-                                </a>
-                                
+                                <form action="{{ url('posts/'.$post->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <a href="{{ url('posts/'.$post->id.'/edit ') }}">
+                                        <button type="button" class="btn btn-success btn-sm">
+                                            <i class="fa fa-edit"> Edit</i>
+                                        </button>
+                                    </a>
+                                    
+                                    <a>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You sure you want to Delete!')">
+                                            <i class="fa fa-trash"> Delete</i>
+                                        </button>
+                                    </a>
+                            </form>
                             </td>
                         </tr>
                         @endforeach

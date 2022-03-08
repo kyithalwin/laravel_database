@@ -88,7 +88,7 @@ class PostController extends Controller
             'content'=> $request->content
         ]);
 
-        return redirect('/posts')->with('SuccessAlert','Your Data Already Updated!');
+        return redirect('/posts')->with('successAlert','Your Data Already Updated!');
     } 
 
     /**
@@ -99,6 +99,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::find($id)->delete();
+        return redirect('/posts')->with('successAlert','Your Data Already Deleted!');
     }
 }
